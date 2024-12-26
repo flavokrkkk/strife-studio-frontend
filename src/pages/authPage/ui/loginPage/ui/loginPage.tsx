@@ -1,5 +1,5 @@
-const LoginPage = () => {
-  return <div>LoginPage</div>;
-};
+import LoginForm from "@/features/auth/ui/loginForm";
+
+const LoginPage = () => <LoginForm />;
 
 export default LoginPage;

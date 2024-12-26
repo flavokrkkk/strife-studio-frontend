@@ -7,6 +7,7 @@ import axios, {
 } from "axios";
 import { RequestOptions } from "https";
 import { catchError } from "../utils";
+import { authService } from "@/entities/auth/libs/authService";
 
 export class AxiosClient {
   private baseQueryV1Instance: AxiosInstance;
@@ -51,8 +52,8 @@ export class AxiosClient {
           originalRequest._retry = true;
 
           try {
-            // const accessToken = await tokenService.refresh();
-            const accessToken = "";
+            await authService.refreshToken();
+            const accessToken = tokenService.getAccessToken();
 
             if (accessToken) {
               tokenService.setAccessToken(accessToken);
